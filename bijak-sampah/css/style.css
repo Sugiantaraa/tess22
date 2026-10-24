@@ -184,29 +184,36 @@ tr:last-child td { border-bottom: 0; }
 /* 7) MEDIA QUERIES (responsif)
    Tablet (<= 900px) dan smartphone (<= 640px). */
 @media (max-width: 900px) {
-  .grid-2 { grid-template-columns: 1fr; }
-  section { padding: 2.75rem 0; }
-  .hero { padding: 3rem 0; }
+  /* ... kode lainnya ... */
 
-  /* Navigasi berubah menjadi menu turun (hamburger) */
-  .tombol-menu { display: block; }
   .menu {
-    display: none; position: absolute; left: 0; right: 0; top: 100%;
-    flex-direction: column; background: var(--hijau-tua); padding: .5rem 1rem 1rem;
-    border-top: 1px solid rgba(255,255,255,.2);
+    display: none; 
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    top: 100%;
+    flex-direction: column; 
+
+    /* 1. UBAH LATAR BELAKANG MENU DI HP KEMARI */
+    background: #edf8e9; 
+
+    padding: .5rem 1rem 1rem;
+    border-top: 1px solid var(--garis); /* Sesuaikan garis batasnya */
+    box-shadow: 0 4px 12px rgba(0,0,0,.1); /* Opsional: tambah bayangan agar terpisah dari konten */
   }
+
   .cek-menu:checked ~ .menu { display: flex; }
-  .menu a { padding: .8rem 1rem; }
+
+  /* 2. UBAH WARNA TEKS MENU AGAR KONTRAST DAN TERBACA DI LATAR TERANG */
+  .menu a { 
+    padding: .8rem 1rem; 
+    color: var(--hijau-tua); /* Ubah teks dari putih ke hijau tua */
+  }
+
+  .menu a:hover { 
+    background: rgba(0, 0, 0, 0.05); /* Latar hover lembut */
+    color: var(--hijau-daun); 
+  }
+
   .bar-nav { position: relative; }
-}
-@media (max-width: 640px) {
-  body { font-size: 1.02rem; }
-  .baris-batang { grid-template-columns: 1fr 48px; }
-  .baris-batang .label { grid-column: 1 / -1; font-weight: 600; }
-  .langkah li { padding-left: 3.6rem; }
-  .tombol { width: 100%; text-align: center; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .kartu-tautan { transition: none; }
 }
